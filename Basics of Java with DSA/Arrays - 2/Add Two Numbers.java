@@ -1,46 +1,49 @@
-
-public class Solution {
-
-    public static void sumOfTwoArrays(int arr1[], int arr2[], int output[]) {
-    	//Your code goes here
-        int n = arr1.length, m = arr2.length;
-        int[] rArr1 = new int[n];
-        int[] rArr2 = new int[m];
-        for(int i = 0; i < n; i++){
-            rArr1[i] = arr1[n-1-i];
-        }
-        for(int i = 0; i < m; i++){
-            rArr2[i] = arr2[m-1-i];
-        }
-        int[] res = new int[10000];
-        int i = 0, j = 0, carry = 0, k = 0; 
-        while(i < n && j < m){
-            int sum = rArr1[i] + rArr2[j] + carry; 
-            res[k] = sum%10;
+class Solution{
+    
+  
+    String calc_Sum(int a[], int n, int b[], int m)
+    {
+        // Complete the function
+        int i = n - 1, j = m - 1; 
+        int carry = 0; 
+        StringBuilder s = new StringBuilder(); 
+        while(i >= 0 && j >= 0){
+            int sum = a[i] + b[j] + carry; 
+            s.append((char)((sum%10) + '0'));
             carry = sum/10;
-            i++;
-            j++;
-            k++;
+            i--;
+            j--;
         }
-        while(i < n){
-            int sum = rArr1[i] + carry; 
-            res[k] = sum%10;
+        while(i >= 0){
+            int sum = a[i] + carry; 
+            s.append((char)((sum%10) + '0'));
             carry = sum/10;
-            i++;
-            k++;
+            i--;
         }
-        while(j < m){
-            int sum = rArr2[j] + carry; 
-            res[k] = sum%10;
+        while(j >= 0){
+            int sum = b[j] + carry; 
+            s.append((char)((sum%10) + '0'));
             carry = sum/10;
-            j++;
-            k++;
+            j--;
         }
-        res[k] = carry;
-        k++;
-        for(i = 0; i < k; i++){
-            output[i] = res[k-1-i];
+        if(carry != 0)
+        {
+            s.append((char)(carry + '0'));
         }
+        s.reverse();
+        // eliminate zeroes in the start
+        StringBuilder s1 = new StringBuilder();
+        int ind = 0; 
+        while(ind < s.length() && s.charAt(ind) == '0'){
+            ind++;
+        }
+        while(ind < s.length()){
+            s1.append(s.charAt(ind));
+            ind++;
+        }
+        String res = new String(s1);
+        return res;
     }
-
+  
+    
 }
