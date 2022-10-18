@@ -44,7 +44,7 @@ public class Solution {
         if(maxRow == -1 && maxCol == -1){
             System.out.println("row 0 " + Integer.MIN_VALUE);
         }
-        if(maxRow == -1){
+        else if(maxRow == -1){
             System.out.println("column " + maxCol + " " + colSum(mat, m, n, maxCol)); 
         }
         else{
