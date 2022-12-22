@@ -38,3 +38,26 @@ public class Solution {
         }
     }
 }
+
+// new solution 
+public class Solution {  
+
+    public static void sortZeroesAndOne(int[] arr) {
+    	//Your code goes here
+        int n = arr.length;
+        int zPointer = 0, oPointer = 0; 
+        for(zPointer = 0; zPointer < n; zPointer++){
+            while(oPointer < n && arr[oPointer] == 0){
+                oPointer++;
+            }
+            while(zPointer < n && arr[zPointer] == 1){
+                zPointer++;
+            }
+            if(zPointer < n && oPointer < n && zPointer > oPointer){
+                int temp = arr[zPointer];
+                arr[zPointer] = arr[oPointer];
+                arr[oPointer] = temp;
+            }
+        }
+    }
+}
