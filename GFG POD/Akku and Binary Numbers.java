@@ -1,3 +1,33 @@
+// Naive soln 
+class Solution{
+    
+    //JAI SHRI RAM 
+    void precompute(){
+    
+    }
+    public static long countSetBits(long x){
+        int cntr = 0;
+        while(x != 0){
+            if(x%2 != 0)
+                cntr++;
+            x = x >> 1; 
+        }
+        return cntr;
+    }
+    long solve(long l, long r){
+        int cntr = 0;
+        // Code here
+        for(long i = l; i <= r; i++){
+            if(countSetBits(i) == 3)
+                cntr++;
+        }
+        return cntr;
+    }
+    
+}
+
+
+// Optimized
 class Solution{
     
     void precompute(){
