@@ -10,6 +10,7 @@ class Solution
         int res = 2*countSeq(n-1, d) + countSeq(n-1, d-1) + countSeq(n-1, d+1);
         return res;
     }
+    
     public int  compute_value(int n)
     {
         //JAI SHRI RAM 
